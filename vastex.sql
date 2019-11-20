@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.0.1
+-- version 4.8.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 16, 2019 at 08:26 AM
--- Server version: 10.4.6-MariaDB
--- PHP Version: 7.3.9
+-- Generation Time: Nov 20, 2019 at 10:07 AM
+-- Server version: 10.1.33-MariaDB
+-- PHP Version: 7.1.18
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -42,7 +42,8 @@ CREATE TABLE `admin` (
 
 INSERT INTO `admin` (`id`, `full_name`, `uname`, `password`, `akses`) VALUES
 (1, 'Admin Test', 'adminnya', 'd8578edf8458ce06fbc5bb76a58c5ca4', NULL),
-(2, 'Raul Gonzales', 'raul25', 'd8578edf8458ce06fbc5bb76a58c5ca4', NULL);
+(2, 'Raul Gonzales', 'raul25', 'd8578edf8458ce06fbc5bb76a58c5ca4', NULL),
+(3, 'Jennifer Aniston', 'janiston', 'd8578edf8458ce06fbc5bb76a58c5ca4', NULL);
 
 -- --------------------------------------------------------
 
@@ -111,7 +112,7 @@ ALTER TABLE `product_1`
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `master_product`
