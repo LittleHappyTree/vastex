@@ -97,22 +97,22 @@
           </div>
           <div class="span2">
             <div class="menu-heading text-center">
-              <a href="<?=base_url()?>id/about" class="btn btn-menu btn-block <?=($active_page=='about') ? 'activated' : '';?>">About</a>
+              <a href="<?=base_url()?>id/about" class="btn btn-menu btn-block <?=($active_page=='certificate') ? 'activated' : '';?>">Certificate</a>
             </div>
           </div>
           <div class="span2">
             <div class="menu-heading text-center">
-              <a href="<?=base_url()?>id/certificate" class="btn btn-menu btn-block <?=($active_page=='certification') ? 'activated' : '';?>">Certification</a>
+              <a href="<?=base_url()?>id/certificate" class="btn btn-menu btn-block <?=($active_page=='machining') ? 'activated' : '';?>">Machining Industry</a>
             </div>
           </div>
           <div class="span2">
             <div class="menu-heading text-center">
-              <a href="<?=base_url()?>id/development" class="btn btn-menu btn-block <?=($active_page=='development') ? 'activated' : '';?>">Development</a>
+              <a href="<?=base_url()?>id/development" class="btn btn-menu btn-block <?=($active_page=='oilgas') ? 'activated' : '';?>">Oil and Gas</a>
             </div>
           </div>
           <div class="span2">
             <div class="menu-heading text-center">
-              <a href="<?=base_url()?>id/contact" class="btn btn-menu btn-block <?=($active_page=='contact') ? 'activated' : '';?>">Contact</a>
+              <a href="<?=base_url()?>id/contact" class="btn btn-menu btn-block <?=($active_page=='about') ? 'activated' : '';?>">About &amp; Contact</a>
             </div>
           </div>
         </div>

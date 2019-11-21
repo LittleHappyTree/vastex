@@ -41,7 +41,7 @@
             </table>
 			</p>
 			<!-- Modal -->
-            <div id="detail" class="modal styled hide fade" tabindex="-1" role="dialog" aria-labelledby="mySignupModalLabel" aria-hidden="true">
+            <div id="detail" class="modal styled hide fade" tabindex="-1" role="dialog" aria-labelledby="mySignupModalLabel" aria-hidden="true" style="width:60%; left:40%;" >
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                 <h4 id="mySignupModalLabel">Spiral Wound Gasket Basic Type</h4>
@@ -65,7 +65,9 @@
               			<td width="5%" valign="top">:</td>
               			<td valign="top">Spiral Wound Gasket Basic Type</b><br>Basic type spiral wound gasket consists of a thin metallic strip and soft non-metallic filler that are simultaneously wound on a rotating mandrel.</td>
               		</tr>
-              	</table>
+				  </table>
+				  <br>
+				  <br>
               </div>
             </div>
 		</div>

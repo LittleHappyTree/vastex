@@ -5,3 +5,20 @@ div.nivo-caption {
 #inner-headline .menu-heading a{
 	margin: 20px 0 0 0;
 }
+
+.new-content {
+    margin-top: -30px;
+}
+
+.fn-black {
+	color: #353535;
+}
+
+.product-margin {
+	margin-top:-10px;
+}
+
+.product-margin > a {
+	color: #353535;
+	font-weight: 500;
+}
