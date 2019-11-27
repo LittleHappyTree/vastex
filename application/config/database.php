@@ -75,10 +75,10 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'localhost',
-	'username' => 'root',
-	'password' => '',
-	'database' => 'vastex',
+	'hostname' => '103.6.206.146',
+	'username' => 'bqsxmzei_vastex',
+	'password' => 'VastexIntiQw32ty',
+	'database' => 'bqsxmzei_vastex',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
