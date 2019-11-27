@@ -3,7 +3,8 @@
 class Models extends CI_Model{
 
     function __construct(){
-	    parent::__construct();
+      parent::__construct();
+      //my models
     }
     
     public function verify($uname,$pass){
