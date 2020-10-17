@@ -75,7 +75,7 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => '103.6.206.146',
+	'hostname' => 'www.littlehappytree.com',
 	'username' => 'bqsxmzei_vastex',
 	'password' => 'VastexIntiQw32ty',
 	'database' => 'bqsxmzei_vastex',
