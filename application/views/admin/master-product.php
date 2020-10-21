@@ -56,8 +56,9 @@
                                 <td>
                                     <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#modal-master<?=$key->id?>">
                                         Action
-                                    </button>
-                                    <a href="" class="btn btn-danger btn-xs"><i class="icon fa fa-trash"></i></a>
+                                    </button>&nbsp;
+                                    <a href="<?=base_url()?>admin/delete/master/<?=$key->id?>" data-toggle="tooltip" title="Delete" onclick="var c = confirm('Are you sure want to Delete this item?'); if(!c) return false" class="btn btn-danger btn-xs"><i class="icon fa fa-trash"></i></a>&nbsp;
+                                    <a href="<?=base_url()?>admin/product/detail/add/<?=$key->id?>" data-toggle="tooltip" title="Add Detail Product" class="btn btn-success btn-xs"><i class="icon fa fa-plus"></i></a>
                                 </td>
                             </tr>
                             <?php $i++; } ?>

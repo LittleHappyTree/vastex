@@ -296,7 +296,7 @@
     <section class="sidebar">
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
-        <li><a href="https://adminlte.io/docs"><i class="fa fa-book"></i> <span>Product</span></a></li>
+        <li><a href="<?=base_url()?>admin/about"><i class="fa fa-book"></i> <span>About Us</span></a></li>
         <li class="treeview">
           <a href="#">
             <i class="fa fa-dashboard"></i> <span>Product</span>
@@ -305,8 +305,8 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="<?=base_url()?>assets/admin/index.html"><i class="fa fa-circle-o"></i> Master Product</a></li>
-            <li><a href="<?=base_url()?>assets/admin/index2.html"><i class="fa fa-circle-o"></i> Sub Product</a></li>
+            <li><a href="<?=base_url()?>admin/product/master"><i class="fa fa-circle-o"></i> Master Product</a></li>
+            <li><a href="<?=base_url()?>admin/product/detail"><i class="fa fa-circle-o"></i> Sub Product</a></li>
           </ul>
         </li>
       </ul>
@@ -552,6 +552,11 @@ $("#mytable2").DataTable();
 $("#mytable3").DataTable();
 $("#mytable4").DataTable();
 $("#mytable5").DataTable();
+$('[data-toggle="tooltip"]').tooltip();
+$('.op-select-1').select2();
+$('.op-select-2').select2();
+$('.op-select-3').select2();
+$('.op-select-4').select2();
 </script>
 </body>
 </html>

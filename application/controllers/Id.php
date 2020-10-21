@@ -12,6 +12,8 @@ class Id extends CI_Controller {
 	public function index(){
 		$data['active_page'] = 'home';
 		$data['page'] 		 = 'web/about-us';
+		$sql = 'SELECT * FROM about';
+		$data['about'] = $this->models->openquery2($sql);
 		$this->load->view('web/frame',$data);
 	}
 

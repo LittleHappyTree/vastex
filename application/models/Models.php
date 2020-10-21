@@ -29,6 +29,10 @@ class Models extends CI_Model{
       return $this->db->update($table,$datas,$where);
     }
 
+    function delete($table,$where){
+      return $this->db->delete($table,$where);
+    }
+
     function openquery($sql,$darray){
       $query	= $this->db->query($sql, $darray);
       return	$query->result();
