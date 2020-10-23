@@ -54,9 +54,9 @@
     <!-- Logo -->
     <a href="<?=base_url()?>assets/admin/index2.html" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>A</b>LT</span>
+      <span class="logo-mini"><b>VIM</b></span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>Admin</b>LTE</span>
+      <span class="logo-lg"><b>Vastex Inti Mulia</b></span>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
@@ -309,6 +309,9 @@
             <li><a href="<?=base_url()?>admin/product/detail"><i class="fa fa-circle-o"></i> Sub Product</a></li>
           </ul>
         </li>
+        <li><a href="<?=base_url()?>admin/service"><i class="fa fa-gears"></i> <span>Service</span></a></li>
+        <li><a href="<?=base_url()?>admin/machinery"><i class="fa fa-gear"></i> <span>Machinery Investment Planning</span></a></li>
+        <li><a href="<?=base_url()?>admin/contact"><i class="fa fa-phone"></i> <span>Address &amp; Contact</span></a></li>
       </ul>
     </section>
     <!-- /.sidebar -->

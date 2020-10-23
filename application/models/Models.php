@@ -8,12 +8,14 @@ class Models extends CI_Model{
     }
     
     public function verify($uname,$pass){
-      $query = $this->db->query("SELECT * FROM admin WHERE uname = ? AND password = ? ",array($uname,md5($pass)));
+      $query = $this->db->query("SELECT * FROM admin WHERE uname = ? AND password = ? AND aktif = ? ",array($uname,md5($pass),'Y'));
       $data = array();
       if ($query->num_rows() == 1) {
           foreach ($query->result() as $row) {
           $data['full_name'] = $row->full_name;
           $data['uname']     = $row->uname;
+          $data['akses']     = $row->akses;
+          $data['id']        = $row->id;
           }
         return $data;
       } else {

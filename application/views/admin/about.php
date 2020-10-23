@@ -10,7 +10,7 @@
         <div class="col-md-12">
             <div class="box box-primary">
                 <div class="box-header with-border">
-                    <h3 class="box-title">Entry About Us</h3>
+                    <h3 class="box-title">Update About Us</h3>
                 </div>    
                 <div class="box-body">
                     <form action="<?=base_url()?>admin/save/about" method="post" enctype="multipart/form-data">

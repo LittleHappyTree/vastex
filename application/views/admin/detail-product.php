@@ -30,6 +30,13 @@
                                 <input type="text" class="form-control" name="nama_produk" required value="<?=$nama_produk?>" placeholder="Enter product name">
                             </div>
                             <div class="form-group">
+                                <label>Tumbnail Image Product</label>
+                                <input type="file" class="form-control" name="thumbnail_img" value="">
+                                <?php if (!empty($thumbnail_img)):?>
+                                <img src="<?=base_url()?>assets/img/<?=$thumbnail_img?>" style="margin-top:10px;" height="100" alt="">
+                                <?php endif;?>
+                            </div>
+                            <div class="form-group">
                                 <label>Product Description</label>
                                 <textarea id="summernote" name="deskripsi"><?=$deskripsi?></textarea>
                             </div>

@@ -55,10 +55,12 @@
           <div class="span4">
             <div class="logo text-center" style="font-size: 13px; margin-top: 35px">
               <a href="index.html"><img src="<?=base_url()?>assets/img/logo-vastex.png" width="300px" /></a>
-              <p>Jl. Daru III No.32 Kawasan Industri, Delta Silicon 5</p>
-              <p style="margin-top: -10px">Lippo Cikarang 17530, Bekasi-Jawa Barat</p>
-              <p style="margin-top: -10px">Telp. (021)89911288, Fax. (021)89911288</p>
-              <p style="margin-top: -10px">E-mail: Admin@vastex.co.id, Marketing@vastex.co.id</p>
+              <?php foreach ($address as $key):?>
+              <p><?=$key->address?></p>
+              <?php endforeach; ?>
+              <?php $i=1; foreach ($contact as $key):?>
+              <?=$key->title.':'?> <?=$key->description?><?=$retVal = ($i%2==0) ? '<br>' : ',' ;?>
+              <?php $i++; endforeach; ?>
             </div>
           </div>
           <div class="span8">
@@ -68,7 +70,7 @@
               <div id="nivo-slider">
                 <div class="nivo-slider">
                   <!-- Slide #1 image -->
-                  <img src="<?=base_url()?>assets/img/slides/nivo/bg-1.jpg" alt="" title="#caption-1" />
+                  <img src="<?=base_url()?>assets/img/slides/nivo/bg-1.jpg" height="200px" alt="" title="#caption-1" />
                   <!-- Slide #2 image -->
                   <img src="<?=base_url()?>assets/img/slides/nivo/bg-2.jpg" alt="" title="#caption-2" />
                   <!-- Slide #3 image -->
@@ -195,13 +197,14 @@
               <h5 class="widgetheading">Contact</h5>
               <address>
 								<strong>Vastex</strong><br>
-								 Jl. Daru III No.32 Kawasan Industri, Delta Silicon 5 Lippo Cikarang 17530, Bekasi-Jawa Barat
+                <?php foreach ($address as $key):?>
+                <p><?=$key->address?></p>
+                <?php endforeach; ?>
 					 		</address>
               <p>
-                <i class="icon-phone"></i> (021)89911288 <br>
-                Fax: (021)89911288 <br>
-                <i class="icon-envelope-alt"></i> Admin@vastex.co.id <br>
-                <i class="icon-envelope-alt"></i> Marketing@vastex.co.id
+                <?php foreach ($contact as $key):?>
+                    <?=$retVal = (empty($key->icon)) ? $key->title.':' : '<i class="fa '.str_replace('fa-','icon-',$key->icon).'"></i>' ;?> <?=$key->description?><br>
+                <?php endforeach; ?>
               </p>
             </div>
           </div>
