@@ -13,8 +13,45 @@ class Admin extends MY_Controller {
       if(count($this->session->userdata("userlogin")) > 0) {
         $log = $this->session->userdata("userlogin");
         $data['full_name'] = $log['full_name'];
+        $data['akses'] = $log['akses'];
         $data['page'] = 'admin/dashboard';
         $this->load->view('admin/frame',$data);
+      } else {
+        redirect("id");
+      }
+    }
+
+    function user($id=""){
+      if(count($this->session->userdata("userlogin")) > 0) {
+        $array = null;
+        $log = $this->session->userdata("userlogin");
+        $data['full_name'] = $log['full_name'];
+        $data['akses'] = $log['akses'];
+        $data['uname'] = $log['uname'];
+        if ($log['akses'] < 2) {
+          $sql = "SELECT * FROM v_admin";
+          $data['id'] = (empty($id)) ? '' : $id;
+          $data['username'] = '';
+          $data['icon']   = '';
+          $data['role']   = '';
+          $data['fname']   = '';
+          if (!empty($data['id'])) {
+            $sql_edit = $sql." WHERE id = '".$id."' AND akses > 0 AND akses > ".$data['akses']." ";
+            if ($this->models->countrows($sql_edit) > 0) {
+              $data['id'] = $this->models->getdata($sql_edit,$array,'id');
+              $data['username'] = $this->models->getdata($sql_edit,$array,'uname');
+              $data['role']   = $this->models->getdata($sql_edit,$array,'akses');
+              $data['fname']   = $this->models->getdata($sql_edit,$array,'full_name');
+            } else {
+              redirect('admin/user');
+            }
+          }
+          $data['list_user'] = $this->models->openquery2($sql." ORDER BY id");
+          $data['page'] = 'admin/user';
+          $this->load->view('admin/frame',$data);
+        } else {
+          redirect("admin");
+        }
       } else {
         redirect("id");
       }
@@ -25,6 +62,7 @@ class Admin extends MY_Controller {
         $array = null;
         $log = $this->session->userdata("userlogin");
         $data['full_name'] = $log['full_name'];
+        $data['akses'] = $log['akses'];
         $data['id'] = $id;
         $sql = "SELECT * FROM main_address";
         $data['address'] = $this->models->openquery2($sql);
@@ -35,8 +73,8 @@ class Admin extends MY_Controller {
         $data['description']   = '';
         if (!empty($id)) {
           $sql_edit = $sql." WHERE id = '".$id."'";
-          $data['title'] = $this->models->getdata($sql,$array,'title');
-          $data['icon']   = $this->models->getdata($sql,$array,'icon');
+          $data['title'] = $this->models->getdata($sql_edit,$array,'title');
+          $data['icon']   = $this->models->getdata($sql_edit,$array,'icon');
           $data['description']   = $this->models->getdata($sql,$array,'description');
         }
         $data['page'] = 'admin/contact';
@@ -51,6 +89,7 @@ class Admin extends MY_Controller {
         $log = $this->session->userdata("userlogin");
         $array = null;
         $data['full_name'] = $log['full_name'];
+        $data['akses'] = $log['akses'];
         $data['page'] = 'admin/service';
         $data['id'] = $id;
         $data['judul_service'] = '';
@@ -59,8 +98,8 @@ class Admin extends MY_Controller {
         $data['load']  = $this->models->openquery2($sql);
         if (!empty($id)) {
           $sql_edit = $sql." WHERE id = '".$id."' ";
-          $data['judul_service'] = $this->models->getdata($sql,$array,'judul_service');
-          $data['deskripsi']   = $this->models->getdata($sql,$array,'deskripsi');
+          $data['judul_service'] = $this->models->getdata($sql_edit,$array,'judul_service');
+          $data['deskripsi']   = $this->models->getdata($sql_edit,$array,'deskripsi');
         }
         $this->load->view('admin/frame',$data);
       } else {
@@ -73,6 +112,7 @@ class Admin extends MY_Controller {
         $log = $this->session->userdata("userlogin");
         $array = null;
         $data['full_name'] = $log['full_name'];
+        $data['akses'] = $log['akses'];
         $data['page'] = 'admin/machinery';
         $data['id'] = $id;
         $data['judul_service'] = '';
@@ -81,8 +121,8 @@ class Admin extends MY_Controller {
         $data['load']  = $this->models->openquery2($sql);
         if (!empty($id)) {
           $sql_edit = $sql." WHERE id = '".$id."' ";
-          $data['judul_service'] = $this->models->getdata($sql,$array,'judul_service');
-          $data['deskripsi']   = $this->models->getdata($sql,$array,'deskripsi');
+          $data['judul_service'] = $this->models->getdata($sql_edit,$array,'judul_service');
+          $data['deskripsi']   = $this->models->getdata($sql_edit,$array,'deskripsi');
         }
         $this->load->view('admin/frame',$data);
       } else {
@@ -94,6 +134,7 @@ class Admin extends MY_Controller {
       if(count($this->session->userdata("userlogin")) > 0) {
         $log = $this->session->userdata("userlogin");
         $data['full_name'] = $log['full_name'];
+        $data['akses'] = $log['akses'];
         $data['page'] = 'admin/about';
         $sql = "SELECT * FROM about";
         $data['load']  = $this->models->openquery2($sql);
@@ -108,6 +149,7 @@ class Admin extends MY_Controller {
         $array = null;
         $log = $this->session->userdata("userlogin");
         $data['full_name'] = $log['full_name'];
+        $data['akses'] = $log['akses'];
         $data['id']        = $id;
         if ($type=='master') {
           $data['nama_produk'] = '';
@@ -293,6 +335,63 @@ class Admin extends MY_Controller {
             $this->models->update('contact',$array,$where);
           }
           redirect('admin/contact#contact');
+        } elseif ($var1=='user') {
+          $id         = $this->input->post('id');
+          $uname      = $this->input->post('uname');
+          $full_name  = $this->input->post('full_name');
+          $password   = $this->input->post('password');
+          $akses      = $this->input->post('akses');
+          $array = array(
+            "uname"         => $uname,
+            "full_name"     => $full_name,
+            "akses"         => $akses,
+            "user_modified" => $log['uname']
+          );
+          if (empty($id)) {
+            $sql = "SELECT * FROM admin WHERE uname = '".$uname."' ";
+            if ($this->models->countrows($sql) > 0) {
+              redirect('admin/user');
+            }
+            $array += ["aktif"     => 'Y', "password"     => md5($password)];
+            $this->models->insert('admin',$array);
+          } else {
+            if (!empty($password)) {
+              $array += ["password"     => md5($password)];
+            }
+            $where = array(
+              "id" => $id
+            );
+            $this->models->update('admin',$array,$where);
+          }
+          redirect('admin/user');
+        }
+      } else {
+        redirect("id");
+      }
+    }
+
+    function action($var1,$var2="",$var3=""){
+      if(count($this->session->userdata("userlogin")) > 0) {
+        $array = null;
+        $log = $this->session->userdata("userlogin");
+        if ($var1=="user") {
+          if (($var2=="deactive") or ($var2=="active")) {
+            $sql = "SELECT * FROM admin WHERE id = ".$var3." AND akses > 0 AND akses > ".$log['akses']." ";
+            $aktif = ($var2=="deactive") ? 'N' : 'Y';
+            if ($this->models->countrows($sql) > 0) {
+              $array = array(
+                "aktif" => $aktif,
+                "user_modified" => $log['uname']
+              );
+              $where = array(
+                "id" => $var3
+              );
+              $this->models->update('admin',$array,$where);
+              redirect('admin/user');
+            } else {
+              redirect('admin/user');
+            }
+          }
         }
       } else {
         redirect("id");

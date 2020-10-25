@@ -35,6 +35,11 @@ class Models extends CI_Model{
       return $this->db->delete($table,$where);
     }
 
+    function countrows($sql){
+      $query	= $this->db->query($sql);
+      return	$query->num_rows();
+    }
+
     function openquery($sql,$darray){
       $query	= $this->db->query($sql, $darray);
       return	$query->result();
