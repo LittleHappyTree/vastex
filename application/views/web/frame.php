@@ -99,7 +99,7 @@
           </div>
           <div class="span2">
             <div class="menu-heading text-center">
-              <a href="<?=base_url()?>id/about" class="btn btn-menu btn-block <?=($active_page=='certificate') ? 'activated' : '';?>">Certificate</a>
+              <a href="<?=base_url()?>id/certificate" class="btn btn-menu btn-block <?=($active_page=='certificate') ? 'activated' : '';?>">Certificate</a>
             </div>
           </div>
           <div class="span2">

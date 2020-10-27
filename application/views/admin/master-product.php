@@ -19,6 +19,13 @@
                             <input type="text" class="form-control" name="nama" value="<?=$nama_produk?>" placeholder="Enter product name">
                         </div>
                         <div class="form-group">
+                            <label>Tumbnail Image Product</label>
+                            <input type="file" class="form-control" name="thumbnail_img" value="">
+                            <?php if (!empty($thumbnail_img)):?>
+                            <img src="<?=base_url()?>assets/img/<?=$thumbnail_img?>" style="margin-top:10px;" height="100" alt="">
+                            <?php endif;?>
+                        </div>
+                        <div class="form-group">
                             <label>Product Description</label>
                             <textarea class="form-control" name="desc" cols="30" rows="10"><?=$deskripsi?></textarea>
                         </div>
@@ -43,6 +50,7 @@
                             <tr>
                                 <th>No</th>
                                 <th>Product Name</th>
+                                <th>Thumbnail Image</th>
                                 <th>Product Description</th>
                                 <th>Action</th>
                             </tr>
@@ -52,6 +60,7 @@
                             <tr>
                                 <td><?=$i?></td>
                                 <td><?=$key->nama_master?></td>
+                                <td><img src="<?=base_url()?>assets/img/<?=$key->thumbnail_img?>" height="50" alt=""></td>
                                 <td><?=substr($key->deskripsi,0,25)?>...</td>
                                 <td>
                                     <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#modal-master<?=$key->id?>">

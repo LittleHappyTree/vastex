@@ -103,6 +103,7 @@
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
         <li><a href="<?=base_url()?>admin/about"><i class="fa fa-book"></i> <span>About Us</span></a></li>
+        <li><a href="<?=base_url()?>admin/certificate"><i class="fa fa-book"></i> <span>Certificate</span></a></li>
         <li class="treeview">
           <a href="#">
             <i class="fa fa-dashboard"></i> <span>Product</span>
@@ -117,6 +118,7 @@
         </li>
         <li><a href="<?=base_url()?>admin/service"><i class="fa fa-gears"></i> <span>Service</span></a></li>
         <li><a href="<?=base_url()?>admin/machinery"><i class="fa fa-gear"></i> <span>Machinery Investment Planning</span></a></li>
+        <li><a href="<?=base_url()?>admin/customer"><i class="fa fa-building"></i> <span>Customer</span></a></li>
         <li><a href="<?=base_url()?>admin/contact"><i class="fa fa-phone"></i> <span>Address &amp; Contact</span></a></li>
         <?php if ($akses < 2):?>
         <li><a href="<?=base_url()?>admin/user"><i class="fa fa-user"></i> <span>User</span></a></li>

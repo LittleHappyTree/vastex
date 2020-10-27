@@ -21,6 +21,52 @@ class Admin extends MY_Controller {
       }
     }
 
+    function customer($id=""){
+      if(count($this->session->userdata("userlogin")) > 0) {
+        $log = $this->session->userdata("userlogin");
+        $data['full_name'] = $log['full_name'];
+        $data['akses'] = $log['akses'];
+        $data['page'] = 'admin/customer';
+        $data['id'] = $id;
+        $data['client'] = '';
+        $array = null;
+        $sql = "SELECT * FROM client";
+        $data['load']  = $this->models->openquery2($sql);
+        if (!empty($id)) {
+          $sql_edit = $sql." WHERE id = '".$id."' ";
+          $data['client'] = $this->models->getdata($sql_edit,$array,'client');
+          $data['thumbnail_img']   = $this->models->getdata($sql_edit,$array,'thumbnail_img');
+        }
+        $this->load->view('admin/frame',$data);
+      } else {
+        redirect("id");
+      }
+    }
+
+    function certificate($id=""){
+      if(count($this->session->userdata("userlogin")) > 0) {
+        $log = $this->session->userdata("userlogin");
+        $data['full_name'] = $log['full_name'];
+        $data['akses'] = $log['akses'];
+        $data['page'] = 'admin/certificate';
+        $data['id'] = $id;
+        $data['judul'] = '';
+        $data['deskripsi']   = '';
+        $array = null;
+        $sql = "SELECT * FROM certificate";
+        $data['load']  = $this->models->openquery2($sql);
+        if (!empty($id)) {
+          $sql_edit = $sql." WHERE id = '".$id."' ";
+          $data['judul'] = $this->models->getdata($sql_edit,$array,'judul');
+          $data['deskripsi']   = $this->models->getdata($sql_edit,$array,'deskripsi');
+          $data['thumbnail_img']   = $this->models->getdata($sql_edit,$array,'thumbnail_img');
+        }
+        $this->load->view('admin/frame',$data);
+      } else {
+        redirect("id");
+      }
+    }
+
     function user($id=""){
       if(count($this->session->userdata("userlogin")) > 0) {
         $array = null;
@@ -100,6 +146,7 @@ class Admin extends MY_Controller {
           $sql_edit = $sql." WHERE id = '".$id."' ";
           $data['judul_service'] = $this->models->getdata($sql_edit,$array,'judul_service');
           $data['deskripsi']   = $this->models->getdata($sql_edit,$array,'deskripsi');
+          $data['thumbnail_img']   = $this->models->getdata($sql_edit,$array,'thumbnail_img');
         }
         $this->load->view('admin/frame',$data);
       } else {
@@ -123,6 +170,7 @@ class Admin extends MY_Controller {
           $sql_edit = $sql." WHERE id = '".$id."' ";
           $data['judul_service'] = $this->models->getdata($sql_edit,$array,'judul_service');
           $data['deskripsi']   = $this->models->getdata($sql_edit,$array,'deskripsi');
+          $data['thumbnail_img']   = $this->models->getdata($sql_edit,$array,'thumbnail_img');
         }
         $this->load->view('admin/frame',$data);
       } else {
@@ -159,6 +207,7 @@ class Admin extends MY_Controller {
             $sql = "SELECT * FROM master_product WHERE id = '".$id."' ORDER BY id";
             $data['nama_produk'] = $this->models->getdata($sql,$array,'nama_master');
             $data['deskripsi']   = $this->models->getdata($sql,$array,'deskripsi');
+            $data['thumbnail_img']   = $this->models->getdata($sql,$array,'thumbnail_img');
           }
           $sql = "SELECT * FROM master_product ORDER BY id";
           $data['load']        = $this->models->openquery2($sql);
@@ -196,13 +245,15 @@ class Admin extends MY_Controller {
             $id          = $this->input->post('id');
             $nama_produk = $this->input->post('nama');
             $deskripsi   = $this->input->post('desc');
+            $thumbnail_img  = $this->up_file('thumbnail_img');
             if ($id=='') {
               $array = array(
-                    "nama_master" => $nama_produk,
-                    "deskripsi"   => $deskripsi,
-                    "date_added"  => date('Y-m-d G:i:s'),
-                    "user_added"  => $log['uname'],
-                    "slug"        => $this->get_slug('master_product',$nama_produk)
+                    "nama_master"   => $nama_produk,
+                    "deskripsi"     => $deskripsi,
+                    "date_added"    => date('Y-m-d G:i:s'),
+                    "user_added"    => $log['uname'],
+                    "slug"          => $this->get_slug('master_product',$nama_produk),
+                    "thumbnail_img" => $thumbnail_img
               );
               $this->models->insert('master_product',$array);
             } else {
@@ -210,6 +261,9 @@ class Admin extends MY_Controller {
                     "nama_master" => $nama_produk,
                     "deskripsi"   => $deskripsi
               );
+              if (!empty($thumbnail_img)) {
+                $array += ["thumbnail_img" => $thumbnail_img];
+              }
               $where = array(
                     "id" => $id
               );
@@ -267,15 +321,19 @@ class Admin extends MY_Controller {
           $judul_service = $this->input->post('judul_service');
           $deskripsi     = $this->input->post('deskripsi');
           $id            = $this->input->post('id');
+          $thumbnail_img = $this->up_file('thumbnail_img');
           $array = array(
             "judul_service"   => $judul_service,
             "deskripsi"       => $deskripsi,
             "user_modified"   => $log['uname']
           );
           if (empty($id)) {
-            $array += ["slug" => $this->get_slug('service',$judul_service)];
+            $array += [ "slug" => $this->get_slug('service',$judul_service), "thumbnail_img" => $thumbnail_img ];
             $this->models->insert('service',$array);
           } else {
+            if (!empty($thumbnail_img)) {
+              $array += ["thumbnail_img" => $thumbnail_img];
+            }
             $where = array(
               "id" => $id
             );
@@ -286,15 +344,19 @@ class Admin extends MY_Controller {
           $judul_service = $this->input->post('judul_service');
           $deskripsi     = $this->input->post('deskripsi');
           $id            = $this->input->post('id');
+          $thumbnail_img = $this->up_file('thumbnail_img');
           $array = array(
             "judul_service"   => $judul_service,
             "deskripsi"       => $deskripsi,
             "user_modified"   => $log['uname']
           );
           if (empty($id)) {
-            $array += ["slug" => $this->get_slug('machinery',$judul_service)];
+            $array += [ "slug" => $this->get_slug('machinery',$judul_service), "thumbnail_img" => $thumbnail_img ] ;
             $this->models->insert('machinery',$array);
           } else {
+            if (!empty($thumbnail_img)) {
+              $array += ["thumbnail_img" => $thumbnail_img];
+            }
             $where = array(
               "id" => $id
             );
@@ -364,6 +426,50 @@ class Admin extends MY_Controller {
             $this->models->update('admin',$array,$where);
           }
           redirect('admin/user');
+        } elseif ($var1=='certificate') {
+          $judul         = $this->input->post('judul');
+          $deskripsi     = $this->input->post('deskripsi');
+          $id            = $this->input->post('id');
+          $thumbnail_img = $this->up_file('thumbnail_img');
+          $array = array(
+            "judul"           => $judul,
+            "deskripsi"       => $deskripsi,
+            "user_modified"   => $log['uname']
+          );
+          if (empty($id)) {
+            $array += [ "slug" => $this->get_slug('certificate',$judul), "thumbnail_img" => $thumbnail_img ];
+            $this->models->insert('certificate',$array);
+          } else {
+            if (!empty($thumbnail_img)) {
+              $array += ["thumbnail_img" => $thumbnail_img];
+            }
+            $where = array(
+              "id" => $id
+            );
+            $this->models->update('certificate',$array,$where);
+          }
+          redirect('admin/certificate');
+        } elseif ($var1=='customer') {
+          $client         = $this->input->post('client');
+          $id            = $this->input->post('id');
+          $thumbnail_img = $this->up_file('thumbnail_img');
+          $array = array(
+            "client"           => $client,
+            "user_modified"   => $log['uname']
+          );
+          if (empty($id)) {
+            $array += [ "thumbnail_img" => $thumbnail_img ];
+            $this->models->insert('client',$array);
+          } else {
+            if (!empty($thumbnail_img)) {
+              $array += ["thumbnail_img" => $thumbnail_img];
+            }
+            $where = array(
+              "id" => $id
+            );
+            $this->models->update('client',$array,$where);
+          }
+          redirect('admin/customer');
         }
       } else {
         redirect("id");
@@ -414,6 +520,12 @@ class Admin extends MY_Controller {
         } elseif ($var1=='machinery') {
           $this->models->delete('machinery', array("id" => $var2) );
           redirect('admin/service');
+        } elseif ($var1=='certificate') {
+          $this->models->delete('certificate', array("id" => $var2) );
+          redirect('admin/certificate');
+        } elseif ($var1=='customer') {
+          $this->models->delete('client', array("id" => $var2) );
+          redirect('admin/customer');
         }
       } else {
         redirect("id");
@@ -424,6 +536,7 @@ class Admin extends MY_Controller {
       if(count($this->session->userdata("userlogin")) > 0) {
         $array = null;
         $slug = str_replace(' ','-',strtolower($title)) ;
+        $slug = preg_replace('/[^A-Za-z0-9\-]/', '', $slug);
         // echo $slug;
         $sql = "SELECT COUNT(*) AS count FROM ".$table." WHERE slug = '".$slug."' ";
         $countslug = $this->models->getdata($sql,$array,'count');

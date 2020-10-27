@@ -1,24 +1,23 @@
 <link rel="stylesheet" href="<?=base_url() ?>assets/admin/summernote/summernote.css">
 <script src="<?=base_url() ?>assets/admin/summernote/summernote.js"></script>
 <section class="content-header">
-    <h1>Machinery</h1>
+    <h1>Certificate</h1>
 </section>
-
 
 <section class="content">
     <div class="row">
         <div class="col-md-12">
             <div class="box box-primary">
                 <div class="box-header with-border">
-                    <h3 class="box-title"> <?=$retVal = ($id=='') ? 'Add' : 'Edit' ;?> Machinery</h3>
+                    <h3 class="box-title"> <?=$retVal = ($id=='') ? 'Add' : 'Edit' ;?> Certificate</h3>
                 </div>    
                 <div class="box-body">
-                    <form action="<?=base_url()?>admin/save/machinery" method="post" enctype="multipart/form-data">
+                    <form action="<?=base_url()?>admin/save/certificate" method="post" enctype="multipart/form-data">
                         <input type="hidden" name="id" value="<?=$id?>">
                         <div class="box-body">
                             <div class="form-group">
-                                <label>Title</label>
-                                <input type="text" class="form-control" name="judul_service" required value="<?=$judul_service?>" placeholder="Enter title">
+                                <label>Certificate Title</label>
+                                <input type="text" class="form-control" name="judul" required value="<?=$judul?>" placeholder="Enter certificate title">
                             </div>
                             <div class="form-group">
                                 <label>Tumbnail Image Product</label>
@@ -44,7 +43,7 @@
         <div class="col-md-12">
             <div class="box box-primary">
                 <div class="box-header with-border">
-                    <h3 class="box-title"> List Machinery</h3>
+                    <h3 class="box-title"> List Certificate</h3>
                 </div>    
                 <div class="box-body">
                 <table id="mytable1" class="table table-bordered table-striped">
@@ -63,13 +62,13 @@
                         <?php $i=1; foreach ($load as $key):?>
                         <tr>
                             <td><?=$i?></td>
-                            <td><?=$key->judul_service?></td>
+                            <td><?=$key->judul?></td>
                             <td><img src="<?=base_url()?>assets/img/<?=$key->thumbnail_img?>" height="50" alt=""></td>
                             <td><?=substr(strip_tags($key->deskripsi),0,30)?>...</td>
                             <td><?=$key->last_modified?></td>
                             <td><?=$key->user_modified?></td>
-                            <td><a href="<?=base_url()?>admin/machinery/<?=$key->id?>" class="btn btn-xs btn-primary">Edit</a> &nbsp; 
-                                <a href="<?=base_url()?>admin/delete/machinery/<?=$key->id?>" data-toggle="tooltip" title="Delete" onclick="var c = confirm('Are you sure want to Delete this item?'); if(!c) return false" class="btn btn-danger btn-xs"><i class="icon fa fa-trash"></i></a>
+                            <td><a href="<?=base_url()?>admin/certificate/<?=$key->id?>" class="btn btn-xs btn-primary">Edit</a> &nbsp; 
+                                <a href="<?=base_url()?>admin/delete/certificate/<?=$key->id?>" data-toggle="tooltip" title="Delete" onclick="var c = confirm('Are you sure want to Delete this item?'); if(!c) return false" class="btn btn-danger btn-xs"><i class="icon fa fa-trash"></i></a>
                             </td>
                         </tr>
                         <?php $i++; endforeach; ?>

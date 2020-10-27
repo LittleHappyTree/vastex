@@ -12,6 +12,7 @@ class Id extends CI_Controller {
 	public function index(){
 		$data['address'] = $this->get_address();
 		$data['contact'] = $this->get_contact();
+		$data['costumers'] = $this->models->opentable('client','ORDER BY id DESC');
 		$data['active_page'] = 'home';
 		$data['page'] 		 = 'web/about-us';
 		$sql = 'SELECT * FROM about';

@@ -21,6 +21,13 @@
                                 <input type="text" class="form-control" name="judul_service" required value="<?=$judul_service?>" placeholder="Enter service title">
                             </div>
                             <div class="form-group">
+                                <label>Tumbnail Image Product</label>
+                                <input type="file" class="form-control" name="thumbnail_img" value="">
+                                <?php if (!empty($thumbnail_img)):?>
+                                <img src="<?=base_url()?>assets/img/<?=$thumbnail_img?>" style="margin-top:10px;" height="100" alt="">
+                                <?php endif;?>
+                            </div>
+                            <div class="form-group">
                                 <label>Service Description</label>
                                 <textarea id="summernote" name="deskripsi"><?=$deskripsi?></textarea>
                             </div>
@@ -45,6 +52,7 @@
                         <tr>
                             <th>No.</th>
                             <th>Service Title</th>
+                            <th>Thumbnail Image</th>
                             <th>Description</th>
                             <th>Last Modified</th>
                             <th>User Modified</th>
@@ -56,6 +64,7 @@
                         <tr>
                             <td><?=$i?></td>
                             <td><?=$key->judul_service?></td>
+                            <td><img src="<?=base_url()?>assets/img/<?=$key->thumbnail_img?>" height="50" alt=""></td>
                             <td><?=substr(strip_tags($key->deskripsi),0,30)?>...</td>
                             <td><?=$key->last_modified?></td>
                             <td><?=$key->user_modified?></td>

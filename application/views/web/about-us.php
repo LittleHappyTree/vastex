@@ -177,6 +177,30 @@
 	</div>
 	<div class="row new-content">
 		<div class="span8">
+			<h3 class="heading"><strong>Our Customers</strong></h3>
+			<ul id="mycarousel" class="jcarousel-skin-tango recent-jcarousel clients">
+			<?php foreach ($costumers as $key):?>
+			<?php $style = (empty($key->thumbnail_img)) ? 'margin-top:35px;' : '' ; ?>
+				<li style="width:250px; height:120px;">
+					<div class="aligncenter">
+						<?php if (!empty($key->thumbnail_img)):?>
+						<img src="<?=base_url()?>assets/img/<?=$key->thumbnail_img?>" style="height:35px;padding-top:10px;" alt="">
+						<?php endif; ?>
+						<p style="padding-top:10px;<?=$style?>"><?=$key->client?></p>
+					</div>
+				</li>
+			<?php endforeach; ?>
+			</ul>
+		</div>
+	</div>
+	<div class="row">
+		<div class="span8">
+			<div class="solidline new-content">
+			</div>
+		</div>
+	</div>
+	<div class="row new-content">
+		<div class="span8">
 			<h3 class="heading"><strong>Gallery</strong></h3>
             <div class="row">
               <section id="projects">
@@ -280,60 +304,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="row new-content">
-		<div class="span8">
-			<h3 class="heading"><strong>Some of Recent Works</strong></h3>
-            <ul id="mycarousel" class="jcarousel-skin-tango recent-jcarousel clients">
-              <li>
-                <a href="#">
-					<img src="<?=base_url()?>assets/img/works/thumbs/image-01.jpg" class="client-logo" alt="" />
-				</a>
-              </li>
-              <li>
-                <a href="#">
-					<img src="<?=base_url()?>assets/img/works/thumbs/image-02.jpg" class="client-logo" alt="" />
-				</a>
-              </li>
-              <li>
-                <a href="#">
-					<img src="<?=base_url()?>assets/img/works/thumbs/image-03.jpg" class="client-logo" alt="" />
-				</a>
-              </li>
-              <li>
-                <a href="#">
-					<img src="<?=base_url()?>assets/img/works/thumbs/image-04.jpg" class="client-logo" alt="" />
-				</a>
-              </li>
-              <li>
-                <a href="#">
-					<img src="<?=base_url()?>assets/img/works/thumbs/image-05.jpg" class="client-logo" alt="" />
-				</a>
-              </li>
-              <li>
-                <a href="#">
-					<img src="<?=base_url()?>assets/img/works/thumbs/image-06.jpg" class="client-logo" alt="" />
-				</a>
-              </li>
-              <li>
-                <a href="#">
-					<img src="<?=base_url()?>assets/img/works/thumbs/image-07.jpg" class="client-logo" alt="" />
-				</a>
-              </li>
-              <li>
-                <a href="#">
-					<img src="<?=base_url()?>assets/img/works/thumbs/image-08.jpg" class="client-logo" alt="" />
-				</a>
-              </li>
-            </ul>
-		</div>
-	</div>
-	<div class="row">
-		<div class="span8">
-			<div class="solidline new-content">
-			</div>
-		</div>
-	</div>
-	<div class="row new-content">
+	<!-- <div class="row new-content">
 		<div class="span8">
 			<h3 class="heading"><strong>Contact Us</strong></h3>
             <form action="" method="post" role="form" class="contactForm">
@@ -363,6 +334,6 @@
               </div>
             </form>
 		</div>
-	</div>
+	</div> -->
 	
 </article>

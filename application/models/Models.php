@@ -50,6 +50,12 @@ class Models extends CI_Model{
       return	$query->result();
     }
 
+    function opentable($table,$where){
+      $sql = "SELECT * FROM ".$table." WHERE 1=1 ".$where." ";
+      $query	= $this->db->query($sql);
+      return	$query->result();
+    }
+
     function getdata($sql,$data,$field){
       $var	= $this->openquery($sql, $data);
       $rs		= null;
