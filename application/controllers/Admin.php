@@ -21,6 +21,35 @@ class Admin extends MY_Controller {
       }
     }
 
+    function gallery($var1="",$var2="",$var3=""){
+      if(count($this->session->userdata("userlogin")) > 0) {
+        $log = $this->session->userdata("userlogin");
+        $data['full_name'] = $log['full_name'];
+        $data['akses'] = $log['akses'];
+        $array = null;
+        $sql = "SELECT * FROM gallery";
+        if (($var1=='add') or ($var1=='edit')) {
+          $data['success'] = (empty($this->session->flashdata('success'))) ? '' : $this->alert('success',$this->session->flashdata('success'));
+          $data['failed'] = (empty($this->session->flashdata('failed'))) ? '' : $this->alert('danger',$this->session->flashdata('failed'));
+          $data['page'] = 'admin/gallery-add';
+          $sql_edit = $sql." WHERE id = '".$var2."' ";
+          $data['id'] = ($var1=='add') ? '' : $var2;
+          $data['judul'] = $this->models->getdata($sql_edit,$array,'judul');
+          $data['deskripsi']   = $this->models->getdata($sql_edit,$array,'deskripsi');
+          if ($var1=='edit') {
+            $sql_picture = "SELECT * FROM gallery_picture WHERE gallery_id = '".$data['id']."' ";
+            $data['load_picture'] = $this->models->openquery2($sql_picture);
+          }
+        } else {
+          $data['page'] = 'admin/gallery-view';
+          $data['load']  = $this->models->openquery2($sql);
+        }
+        $this->load->view('admin/frame',$data);
+      } else {
+        redirect("id");
+      }
+    }
+
     function customer($id=""){
       if(count($this->session->userdata("userlogin")) > 0) {
         $log = $this->session->userdata("userlogin");
@@ -470,6 +499,39 @@ class Admin extends MY_Controller {
             $this->models->update('client',$array,$where);
           }
           redirect('admin/customer');
+        } elseif ($var1=='gallery') {
+          $judul         = $this->input->post('judul');
+          $deskripsi     = $this->input->post('deskripsi');
+          $id            = $this->input->post('id');
+          $array = array(
+            "judul"   => $judul,
+            "deskripsi"       => $deskripsi,
+            "user_modified"   => $log['uname']
+          );
+          if (empty($id)) {
+            $array += [ "slug" => $this->get_slug('gallery',$judul)];
+            $this->models->insert('gallery',$array);
+            $id = $this->db->insert_id();
+          } else {
+            if (!empty($thumbnail_img)) {
+              $array += ["thumbnail_img" => $thumbnail_img];
+            }
+            $where = array(
+              "id" => $id
+            );
+            $this->models->update('gallery',$array,$where);
+          }
+          redirect('admin/gallery/edit/'.$id);
+        } elseif ($var1=='gallery_picture') {
+          $gallery_id    = $this->input->post('gallery_id');
+          $thumbnail_img = $this->up_file('thumbnail_img');
+          $array = array(
+            "gallery_id"   => $gallery_id,
+            "user_added"   => $log['uname']
+          );
+          $array += [ "thumbnail_img" => $thumbnail_img ];
+          $this->models->insert('gallery_picture',$array);
+          redirect('admin/gallery/edit/'.$gallery_id.'#gallery-picture');
         }
       } else {
         redirect("id");
@@ -526,6 +588,12 @@ class Admin extends MY_Controller {
         } elseif ($var1=='customer') {
           $this->models->delete('client', array("id" => $var2) );
           redirect('admin/customer');
+        } elseif ($var1=='gallery') {
+          $this->models->delete('gallery', array("id" => $var2) );
+          redirect('admin/gallery');
+        } elseif ($var1=='gallery_picture') {
+          $this->models->delete('gallery_picture', array("id" => $var2) );
+          redirect('admin/gallery/edit/'.$var3.'#gallery-picture');
         }
       } else {
         redirect("id");
@@ -607,6 +675,14 @@ class Admin extends MY_Controller {
       } else {
         redirect("id");
       }
+    }
+
+    function alert($type,$msg){
+      $alert = '<div class="alert alert-'.$type.' alert-dismissible">
+                  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                  '.$msg.'
+                </div>';
+      return $alert;
     }
 
     function delete_image(Type $var = null){

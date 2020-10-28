@@ -24,11 +24,15 @@ class Models extends CI_Model{
     }
 
     function insert($table,$datas){
-      return $this->db->insert($table,$datas);
+      $this->db->insert($table,$datas);
+      $insert = ($this->db->affected_rows() > 0) ? $this->session->set_flashdata('success', 'Success to Save Data') : $this->session->set_flashdata('failed', 'Failed to Save Data');
+      return $insert;
     }
 
     function update($table,$datas,$where){
-      return $this->db->update($table,$datas,$where);
+      $this->db->update($table,$datas,$where);
+      $update = ($this->db->affected_rows() > 0) ? $this->session->set_flashdata('success', 'Success to Update Data') : $this->session->set_flashdata('failed', 'Failed to Update Data');
+      return $update;
     }
 
     function delete($table,$where){
