@@ -1785,6 +1785,17 @@ ul.contact-info li {
 	list-style: none;
 }
 
+ul.cat li:before {
+	content: "\f054";
+	/* FontAwesome Unicode */
+	font-family: FontAwesome;
+	display: inline-block;
+	margin-left: -1.3em;
+	/* same as padding-left set on li */
+	width: 1.3em;
+	/* same as padding-left set on li */
+}
+
 ul.cat li a,
 ul.folio-detail li a {
 	color: #656565;

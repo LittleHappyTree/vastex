@@ -6,16 +6,51 @@
           <h3><a href="#">Our Product</a></h3>
         </div>
       </div>
-      <div class="widget">
-        <ul class="tags">
-          <li><a href="<?=base_url()?>id/product/product1">Product 1</a></li>
-          <li><a href="<?=base_url()?>id/product/product1">Product 2</a></li>
-          <li><a href="<?=base_url()?>id/product/product1">Product 3</a></li>
-          <li><a href="<?=base_url()?>id/product/product1">Product 4</a></li>
-          <li><a href="<?=base_url()?>id/product/product1">Product 5</a></li>
-          <li><a href="<?=base_url()?>id/product/product1">Product 6</a></li>
-        </ul>
+    </div>
+  </div>
+</article>
+  <?php foreach ($master_product_inside as $key):?>
+<article style="margin-top:-70px">
+  <div class="row">
+    <div class="span8">
+      <div class="post-image">
+        <div class="post-heading">
+          <h4><a href="<?=base_url()?>id/product/<?=$key->slug?>"><?=$key->nama_master?></a></h4>
+        </div>
+        <div class="aligncenter">
+        <img src="<?=base_url()?>assets/img/<?=$key->thumbnail_img?>" alt="" />
+        </div>
+      </div>
+      <p>
+        <?php if (empty($id)):?>
+        <?=substr($key->deskripsi,0,400)?>...
+        <?php else: ?>
+        <?=$key->deskripsi?>
+        <?php endif; ?>
+      </p>
+      <?php $counter=0; foreach ($detail_product as $detail): $counter += ($detail->id_master==$key->id) ? 1 : 0 ; endforeach; ?>
+      <?php if ($counter > 0):?>
+      This Product also contain:<br>
+        <?php foreach ($detail_product as $detail):
+                if ($detail->id_master==$key->id):?>
+                  <a href="<?=base_url()?>id/product/<?=$key->slug?>/<?=$detail->slug?>" class="btn btn-default" style="margin-top:10px; text-transform:none;"><?=$detail->nama_produk?></a>
+        <?php   endif; 
+              endforeach; ?>
+      <?php endif; ?>
+      <br>
+      <br>
+      <?php if (empty($id)):?>
+      <a href="<?=base_url()?>id/product/<?=$key->slug?>" class="btn btn-theme">Read More</a>
+      <?php endif; ?>
+      <br>
+      <br>
+      <div class="row">
+        <div class="span8">
+          <div class="solidline">
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </article>
+<?php endforeach; ?>

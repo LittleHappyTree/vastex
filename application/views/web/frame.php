@@ -128,12 +128,14 @@
                 <div class="widget">
                   <h5 class="widgetheading">Product</h5>
                   <ul class="cat">
-                    <li><i class="icon-angle-right"></i><a href="<?=base_url()?>id/product/product1">Product 1</li>
-                    <li><i class="icon-angle-right"></i><a href="<?=base_url()?>id/product/product1">Product 2</li>
-                    <li><i class="icon-angle-right"></i><a href="<?=base_url()?>id/product/product1">Product 3</li>
-                    <li><i class="icon-angle-right"></i><a href="<?=base_url()?>id/product/product1">Product 4</li>
-                    <li><i class="icon-angle-right"></i><a href="<?=base_url()?>id/product/product1">Product 5</li>
-                  </ul>
+                    <?php foreach ($master_product as $key): ?>
+                    <li><a href="<?=base_url()?>id/product/<?=$key->slug?>"><?=$key->nama_master?></a></li>
+                      <?php foreach ($detail_product as $detail):?>
+                        <?php if ($detail->id_master == $key->id):?>
+                        <li style="margin-top: -15px;margin-left: 17px;font-weight: normal;"><a href="<?=base_url()?>id/product/<?=$key->slug?>/<?=$detail->slug?>"><?=$detail->nama_produk?></a></li> 
+                        <?php endif; ?>
+                      <?php endforeach; ?>
+                    <?php endforeach; ?>
                 </div>
               </aside>
             </div>
@@ -160,11 +162,14 @@
             <div class="widget">
               <h5 class="widgetheading">Product</h5>
               <ul class="link-list">
-                <li><a href="#">Product 1</a></li>
-                <li><a href="#">Product 2</a></li>
-                <li><a href="#">Product 3</a></li>
-                <li><a href="#">Product 4</a></li>
-                <li><a href="#">Product 5</a></li>
+                <?php foreach ($master_product as $key): ?>
+                <li><a href="<?=base_url()?>id/product/<?=$key->slug?>"><?=$key->nama_master?></a></li>
+                  <?php foreach ($detail_product as $detail):?>
+                    <?php if ($detail->id_master == $key->id):?>
+                    <li style="margin-left:10px;font-weight:normal;margin-left:10px;font-weight:normal;"><a href="<?=base_url()?>id/product/<?=$key->slug?>/<?=$detail->slug?>"><?=$detail->nama_produk?></a></li> 
+                    <?php endif; ?>
+                  <?php endforeach; ?>
+                <?php endforeach; ?>
               </ul>
             </div>
           </div>

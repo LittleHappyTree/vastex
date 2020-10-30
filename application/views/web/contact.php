@@ -3,6 +3,20 @@
     <div class="span8">
       <div class="post-image">
         <div class="post-heading">
+          <h3><a href="#">About Us</a></h3>
+        </div>
+      </div>
+      <?php foreach ($about as $key):?>
+			<?=$key->description?>
+			<?php endforeach; ?>
+    </div>
+  </div>
+</article>
+<article>
+  <div class="row">
+    <div class="span8">
+      <div class="post-image">
+        <div class="post-heading">
           <h3><a href="#">Get in touch with us</a></h3>
         </div>
       </div>

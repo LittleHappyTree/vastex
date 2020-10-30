@@ -13,6 +13,8 @@ class Id extends CI_Controller {
 		$data['address'] = $this->get_address();
 		$data['contact'] = $this->get_contact();
 		$data['costumers'] = $this->models->opentable('client','ORDER BY id DESC');
+		$data['master_product'] = $this->models->opentable('master_product','ORDER BY id');
+		$data['detail_product'] = $this->models->opentable('product_1','ORDER BY id');
 		$data['active_page'] = 'home';
 		$data['page'] 		 = 'web/about-us';
 		$sql = 'SELECT * FROM about';
@@ -20,18 +22,37 @@ class Id extends CI_Controller {
 		$this->load->view('web/frame',$data);
 	}
 
-	public function product($type=''){
+	public function product($var1='',$var2=''){
 		$data['address'] = $this->get_address();
 		$data['contact'] = $this->get_contact();
+		$data['master_product'] = $this->models->opentable('master_product','ORDER BY id');
+		$data['detail_product'] = $this->models->opentable('product_1','ORDER BY id');
+		$data['master_product_inside'] = $data['master_product'];
+		$data['id'] = $var1;
+		$data['page'] 		 = 'web/product';
+		if (!empty($var1)) {
+			$data['master_product_inside'] = $this->models->opentable('master_product',"AND slug = '".$var1."' ORDER BY id");
+			if (count($data['master_product_inside']) == 0) {
+				redirect('id/product');
+			}
+		}
+		if (!empty($var2)) {
+			$data['detail_product_inside'] = $this->models->opentable('product_1',"AND slug = '".$var2."' ORDER BY id");
+			if (count($data['detail_product_inside']) == 0) {
+				redirect('id/product/'.$var1);
+			}
+			$data['page'] 		 = 'web/product-detail';
+		}
 		$data['active_page'] = 'product';
-		$loadpage = ($type=='') ? 'web/product' : 'web/product-detail' ;
-		$data['page'] 		 = $loadpage;
 		$this->load->view('web/frame',$data);
 	}
 
 	public function about(){
 		$data['address'] = $this->get_address();
 		$data['contact'] = $this->get_contact();
+		$data['master_product'] = $this->models->opentable('master_product','ORDER BY id');
+		$data['detail_product'] = $this->models->opentable('product_1','ORDER BY id');
+		$data['active_page'] = 'home';
 		$data['active_page'] = 'home';
 		$data['page'] 		 = 'web/about-us';
 		$this->load->view('web/frame',$data);
@@ -40,6 +61,8 @@ class Id extends CI_Controller {
 	public function certificate(){
 		$data['address'] = $this->get_address();
 		$data['contact'] = $this->get_contact();
+		$data['master_product'] = $this->models->opentable('master_product','ORDER BY id');
+		$data['detail_product'] = $this->models->opentable('product_1','ORDER BY id');
 		$data['active_page'] = 'certificate';
 		$data['page'] 		 = 'web/certificate';
 		$this->load->view('web/frame',$data);
@@ -48,6 +71,8 @@ class Id extends CI_Controller {
 	public function development(){
 		$data['address'] = $this->get_address();
 		$data['contact'] = $this->get_contact();
+		$data['master_product'] = $this->models->opentable('master_product','ORDER BY id');
+		$data['detail_product'] = $this->models->opentable('product_1','ORDER BY id');
 		$data['active_page'] = 'development';
 		$data['page'] 		 = 'web/development';
 		$this->load->view('web/frame',$data);
@@ -56,6 +81,9 @@ class Id extends CI_Controller {
 	public function contact(){
 		$data['address'] = $this->get_address();
 		$data['contact'] = $this->get_contact();
+		$data['master_product'] = $this->models->opentable('master_product','ORDER BY id');
+		$data['detail_product'] = $this->models->opentable('product_1','ORDER BY id');
+		$data['about']   = $this->models->opentable('about','ORDER BY id DESC');
 		$data['active_page'] = 'contact';
 		$data['page'] 		 = 'web/contact';
 		$this->load->view('web/frame',$data);
