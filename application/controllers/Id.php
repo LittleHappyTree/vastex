@@ -15,6 +15,7 @@ class Id extends CI_Controller {
 		$data['costumers'] = $this->models->opentable('client','ORDER BY id DESC');
 		$data['master_product'] = $this->models->opentable('master_product','ORDER BY id');
 		$data['detail_product'] = $this->models->opentable('product_1','ORDER BY id');
+		$data['service'] = $this->models->opentable('service','ORDER BY id');
 		$data['active_page'] = 'home';
 		$data['page'] 		 = 'web/about-us';
 		$sql = 'SELECT * FROM about';
@@ -44,6 +45,25 @@ class Id extends CI_Controller {
 			$data['page'] 		 = 'web/product-detail';
 		}
 		$data['active_page'] = 'product';
+		$this->load->view('web/frame',$data);
+	}
+
+	public function service($var1=""){
+		$data['address'] = $this->get_address();
+		$data['contact'] = $this->get_contact();
+		$data['master_product'] = $this->models->opentable('master_product','ORDER BY id');
+		$data['detail_product'] = $this->models->opentable('product_1','ORDER BY id');
+		$data['service'] = $this->models->opentable('service','ORDER BY id');
+		$data['service_inside'] = $data['service'];
+		$data['id']      = $var1;
+		if (!empty($var1)) {
+			$data['service_inside'] = $this->models->opentable('service',"AND slug = '".$var1."' ORDER BY id");
+			if (count($data['service_inside']) == 0) {
+				redirect('id/service');
+			}
+		}
+		$data['page']    = 'web/service';
+		$data['active_page'] = 'service';
 		$this->load->view('web/frame',$data);
 	}
 

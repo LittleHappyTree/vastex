@@ -87,7 +87,7 @@
     <section id="inner-headline">
       <div class="container" style="margin-bottom: -10px;">
         <div class="row">
-          <div class="span2">
+          <div class="span1">
             <div class="menu-heading text-center">
               <a href="<?=base_url()?>" class="btn btn-menu btn-block <?=($active_page=='home') ? 'activated' : '';?> ">Home</a>
             </div>
@@ -104,12 +104,17 @@
           </div>
           <div class="span2">
             <div class="menu-heading text-center">
-              <a href="<?=base_url()?>id/certificate" class="btn btn-menu btn-block <?=($active_page=='machining') ? 'activated' : '';?>">Machining Industry</a>
+              <a href="<?=base_url()?>id/service" class="btn btn-menu btn-block <?=($active_page=='service') ? 'activated' : '';?>">Services</a>
             </div>
           </div>
           <div class="span2">
             <div class="menu-heading text-center">
-              <a href="<?=base_url()?>id/development" class="btn btn-menu btn-block <?=($active_page=='oilgas') ? 'activated' : '';?>">Oil and Gas</a>
+              <a href="<?=base_url()?>id/development" class="btn btn-menu btn-block <?=($active_page=='machinery') ? 'activated' : '';?>">Machinery Investment Planning</a>
+            </div>
+          </div>
+          <div class="span1">
+            <div class="menu-heading text-center">
+              <a href="<?=base_url()?>id/development" class="btn btn-menu btn-block <?=($active_page=='gallery') ? 'activated' : '';?>">Gallery</a>
             </div>
           </div>
           <div class="span2">

@@ -27,51 +27,25 @@
 			<div class="row">
 				<div class="span12">
 					<div class="row">
+						<?php foreach ($master_product as $key):?>
 						<div class="span3">
 							<div class="aligncenter">
 								<div class="aligncenter icon" style="margin-left:9px;">
-									<i class="icon-briefcase icon-circled icon-64 active"></i>
+									<img src="<?=base_url()?>assets/img/<?=$key->thumbnail_img?>" alt="">
 								</div>
 								<div class="text">
-								<h6><strong>SWG</strong></h6>
+								<h6><a href="<?=base_url()?>id/product/<?=$key->slug?>"><strong><?=$key->nama_master?></strong></a></h6>
 									<div class="product-margin">
-										<a href="">SWG Type-1</a><br>
-										<a href="">SWG Type-2</a><br>
-										<a href="">SWG Type-3</a>
+										<?php foreach ($detail_product as $detail):?>
+										<?php if ($detail->id_master==$key->id):?>
+										<a href="<?=base_url()?>id/product/<?=$key->slug?>/<?=$detail->slug?>"><?=$detail->nama_produk?></a><br>
+										<?php endif; ?>
+										<?php endforeach; ?>
 									</div>
 								</div>
 							</div>
 						</div>
-						<div class="span3">
-							<div class="aligncenter">
-								<div class="aligncenter icon" style="margin-left:9px;">
-									<i class="icon-briefcase icon-circled icon-64 active"></i>
-								</div>
-								<div class="text">
-									<h6><strong>Ring Joint</strong></h6>
-									<div class="product-margin">
-										<a href="">Ring Joint Type-1</a><br>
-										<a href="">Ring Joint Type-2</a><br>
-										<a href="">Ring Joint Type-3</a>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="span3">
-							<div class="aligncenter">
-								<div class="aligncenter icon" style="margin-left:9px;">
-									<i class="icon-briefcase icon-circled icon-64 active"></i>
-								</div>
-								<div class="text">
-									<h6><strong>Materials</strong></h6>
-									<div class="product-margin">
-										<a href="">Material 1</a><br>
-										<a href="">Material 2</a><br>
-										<a href="">Material 3</a>
-									</div>
-								</div>
-							</div>
-						</div>
+						<?php endforeach; ?>
 					</div>
 				</div>
 			</div>
@@ -85,41 +59,12 @@
 	</div>
 	<div class="row new-content">
 		<div class="span8">
-			<h3 class="heading"><strong>Machining Industry</strong></h3>
+			<h3 class="heading"><strong>Our Services</strong></h3>
 			<div class="row">
 				<div class="span12">
-					<div class="row">
-						<div class="span3">
-							<div class="aligncenter">
-								<div class="aligncenter icon" style="margin-left:9px;">
-									<i class="icon-briefcase icon-circled icon-64 active"></i>
-								</div>
-								<div class="text">
-								<h6><strong>Machine 1</strong></h6>
-								</div>
-							</div>
-						</div>
-						<div class="span3">
-							<div class="aligncenter">
-								<div class="aligncenter icon" style="margin-left:9px;">
-									<i class="icon-wrench icon-circled icon-64 active"></i>
-								</div>
-								<div class="text">
-									<h6><strong>Machine 2</strong></h6>
-								</div>
-							</div>
-						</div>
-						<div class="span3">
-							<div class="aligncenter">
-								<div class="aligncenter icon" style="margin-left:9px;">
-									<i class="icon-briefcase icon-circled icon-64 active"></i>
-								</div>
-								<div class="text">
-									<h6><strong>Machine 3</strong></h6>
-								</div>
-							</div>
-						</div>
-					</div>
+					<?php foreach ($service as $key):?>
+					<a href="<?=base_url()?>id/service/<?=$key->slug?>" class="btn btn-theme" style="margin-top:3px;"><?=$key->judul_service?></a>
+					<?php endforeach; ?>
 				</div>
 			</div>
 		</div>
@@ -132,7 +77,7 @@
 	</div>
 	<div class="row new-content">
 		<div class="span8">
-			<h3 class="heading"><strong>Oil &amp; Gas</strong></h3>
+			<h3 class="heading"><strong>Machinery Investment Planning</strong></h3>
 			<div class="row">
 				<div class="span12">
 					<div class="row">
