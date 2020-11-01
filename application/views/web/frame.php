@@ -192,9 +192,9 @@
           </div>
           <div class="span2">
             <div class="widget">
-              <h5 class="widgetheading">Development</h5>
+              <h5 class="widgetheading">Gallery</h5>
               <ul class="link-list">
-                <li><a href="#">Development</a></li>
+                <li><a href="#">Gallery</a></li>
               </ul>
             </div>
           </div>
