@@ -28,6 +28,7 @@ class Id extends CI_Controller {
 	public function product($var1='',$var2=''){
 		$data['address'] = $this->get_address();
 		$data['contact'] = $this->get_contact();
+		$data['gallery_picture'] = $this->models->opentable('v_gallery_picture','LIMIT 8');
 		$data['master_product'] = $this->models->opentable('master_product','ORDER BY id');
 		$data['detail_product'] = $this->models->opentable('product_1','ORDER BY id');
 		$data['master_product_inside'] = $data['master_product'];
@@ -53,6 +54,7 @@ class Id extends CI_Controller {
 	public function service($var1=""){
 		$data['address'] = $this->get_address();
 		$data['contact'] = $this->get_contact();
+		$data['gallery_picture'] = $this->models->opentable('v_gallery_picture','LIMIT 8');
 		$data['master_product'] = $this->models->opentable('master_product','ORDER BY id');
 		$data['detail_product'] = $this->models->opentable('product_1','ORDER BY id');
 		$data['service'] = $this->models->opentable('service','ORDER BY id');
@@ -72,6 +74,7 @@ class Id extends CI_Controller {
 	public function machinery($var1=""){
 		$data['address'] = $this->get_address();
 		$data['contact'] = $this->get_contact();
+		$data['gallery_picture'] = $this->models->opentable('v_gallery_picture','LIMIT 8');
 		$data['master_product'] = $this->models->opentable('master_product','ORDER BY id');
 		$data['detail_product'] = $this->models->opentable('product_1','ORDER BY id');
 		$data['machinery'] = $this->models->opentable('machinery','ORDER BY id');
@@ -91,6 +94,7 @@ class Id extends CI_Controller {
 	public function about(){
 		$data['address'] = $this->get_address();
 		$data['contact'] = $this->get_contact();
+		$data['gallery_picture'] = $this->models->opentable('v_gallery_picture','LIMIT 8');
 		$data['master_product'] = $this->models->opentable('master_product','ORDER BY id');
 		$data['detail_product'] = $this->models->opentable('product_1','ORDER BY id');
 		$data['active_page'] = 'home';
@@ -102,6 +106,7 @@ class Id extends CI_Controller {
 	public function certificate($var1=""){
 		$data['address'] = $this->get_address();
 		$data['contact'] = $this->get_contact();
+		$data['gallery_picture'] = $this->models->opentable('v_gallery_picture','LIMIT 8');
 		$data['master_product'] = $this->models->opentable('master_product','ORDER BY id');
 		$data['detail_product'] = $this->models->opentable('product_1','ORDER BY id');
 		$data['certificate'] = $this->models->opentable('certificate','ORDER BY id');
@@ -121,6 +126,7 @@ class Id extends CI_Controller {
 	public function gallery($var1=''){
 		$data['address'] = $this->get_address();
 		$data['contact'] = $this->get_contact();
+		$data['gallery_picture'] = $this->models->opentable('v_gallery_picture','LIMIT 8');
 		$data['master_product'] = $this->models->opentable('master_product','ORDER BY id');
 		$data['detail_product'] = $this->models->opentable('product_1','ORDER BY id');
 		$data['gallery_view'] = $this->models->opentable('v_gallery','');
@@ -140,6 +146,7 @@ class Id extends CI_Controller {
 	public function contact(){
 		$data['address'] = $this->get_address();
 		$data['contact'] = $this->get_contact();
+		$data['gallery_picture'] = $this->models->opentable('v_gallery_picture','LIMIT 8');
 		$data['master_product'] = $this->models->opentable('master_product','ORDER BY id');
 		$data['detail_product'] = $this->models->opentable('product_1','ORDER BY id');
 		$data['about']   = $this->models->opentable('about','ORDER BY id DESC');
