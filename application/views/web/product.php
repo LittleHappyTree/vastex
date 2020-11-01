@@ -3,7 +3,7 @@
     <div class="span8">
       <div class="post-image">
         <div class="post-heading">
-          <h3><a href="#">Our Product</a></h3>
+          <h3><a href="<?=base_url()?>id/product">Our Product</a></h3>
         </div>
       </div>
     </div>
@@ -23,7 +23,11 @@
       </div>
       <p>
         <?php if (empty($id)):?>
-        <?=substr($key->deskripsi,0,400)?>...
+          <?php if ( strlen(strip_tags($key->deskripsi)) < 400):?>
+          <?=strip_tags($key->deskripsi)?>
+          <?php else: ?>
+          <?=substr(strip_tags($key->deskripsi),0,400)?>...
+          <?php endif; ?>
         <?php else: ?>
         <?=$key->deskripsi?>
         <?php endif; ?>

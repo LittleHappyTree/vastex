@@ -80,38 +80,9 @@
 			<h3 class="heading"><strong>Machinery Investment Planning</strong></h3>
 			<div class="row">
 				<div class="span12">
-					<div class="row">
-						<div class="span3">
-							<div class="aligncenter">
-								<div class="aligncenter icon" style="margin-left:9px;">
-									<i class="icon-briefcase icon-circled icon-64 active"></i>
-								</div>
-								<div class="text">
-								<h6><strong>Oil &amp; Gas</strong></h6>
-								</div>
-							</div>
-						</div>
-						<div class="span3">
-							<div class="aligncenter">
-								<div class="aligncenter icon" style="margin-left:9px;">
-									<i class="icon-wrench icon-circled icon-64 active"></i>
-								</div>
-								<div class="text">
-									<h6><strong>Oil &amp; Gas</strong></h6>
-								</div>
-							</div>
-						</div>
-						<div class="span3">
-							<div class="aligncenter">
-								<div class="aligncenter icon" style="margin-left:9px;">
-									<i class="icon-briefcase icon-circled icon-64 active"></i>
-								</div>
-								<div class="text">
-									<h6><strong>Oil &amp; Gas</strong></h6>
-								</div>
-							</div>
-						</div>
-					</div>
+					<?php foreach ($machinery as $key):?>
+					<a href="<?=base_url()?>id/machinery/<?=$key->slug?>" class="btn btn-theme" style="margin-top:3px;"><?=$key->judul_service?></a>
+					<?php endforeach; ?>
 				</div>
 			</div>
 		</div>
@@ -152,94 +123,15 @@
             <div class="row">
               <section id="projects">
                 <ul id="thumbs" class="portfolio">
-                  <!-- Item Project and Filter Name -->
-                  <li class="item-thumbs span2 design" data-id="id-0" data-type="web">
-                    <!-- Fancybox - Gallery Enabled - Title - Full Image -->
-                    <a class="hover-wrap fancybox" data-fancybox-group="gallery" title="The City" href="<?=base_url()?>assets/img/works/full/image-01-full.jpg">
+				<?php $count=0; foreach ($gallery_picture as $key):?>
+					<li class="item-thumbs span2 design" data-id="id-<?=$count?>" data-type="web">
+						<a class="hover-wrap fancybox" data-fancybox-group="gallery" title="<?=$key->judul?>" href="<?=base_url()?>assets/img/<?=$key->thumbnail_img?>">
 						<span class="overlay-img"></span>
-						<span class="overlay-img-thumb font-icon-plus"></span>
+						<span class="overlay-img-thumb font-icon-search"></span>
 						</a>
-                    <!-- Thumb Image and Description -->
-                    <img src="<?=base_url()?>assets/img/works/thumbs/image-01.jpg" alt="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis elementum odio. Curabitur pellentesque, dolor vel pharetra mollis.">
-                  </li>
-                  <!-- End Item Project -->
-                  <!-- Item Project and Filter Name -->
-                  <li class="item-thumbs span2 design" data-id="id-1" data-type="icon">
-                    <!-- Fancybox - Gallery Enabled - Title - Full Image -->
-                    <a class="hover-wrap fancybox" data-fancybox-group="gallery" title="The Office" href="<?=base_url()?>assets/img/works/full/image-02-full.jpg">
-						<span class="overlay-img"></span>
-						<span class="overlay-img-thumb font-icon-plus"></span>
-						</a>
-                    <!-- Thumb Image and Description -->
-                    <img src="<?=base_url()?>assets/img/works/thumbs/image-02.jpg" alt="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis elementum odio. Curabitur pellentesque, dolor vel pharetra mollis.">
-                  </li>
-                  <!-- End Item Project -->
-                  <!-- Item Project and Filter Name -->
-                  <li class="item-thumbs span2 photography" data-id="id-2" data-type="illustrator">
-                    <!-- Fancybox - Gallery Enabled - Title - Full Image -->
-                    <a class="hover-wrap fancybox" data-fancybox-group="gallery" title="The Mountains" href="<?=base_url()?>assets/img/works/full/image-03-full.jpg">
-						<span class="overlay-img"></span>
-						<span class="overlay-img-thumb font-icon-plus"></span>
-						</a>
-                    <!-- Thumb Image and Description -->
-                    <img src="<?=base_url()?>assets/img/works/thumbs/image-03.jpg" alt="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis elementum odio. Curabitur pellentesque, dolor vel pharetra mollis.">
-                  </li>
-                  <!-- End Item Project -->
-                  <!-- Item Project and Filter Name -->
-                  <li class="item-thumbs span2 photography" data-id="id-2" data-type="illustrator">
-                    <!-- Fancybox - Gallery Enabled - Title - Full Image -->
-                    <a class="hover-wrap fancybox" data-fancybox-group="gallery" title="The Mountains" href="<?=base_url()?>assets/img/works/full/image-04-full.jpg">
-						<span class="overlay-img"></span>
-						<span class="overlay-img-thumb font-icon-plus"></span>
-						</a>
-                    <!-- Thumb Image and Description -->
-                    <img src="<?=base_url()?>assets/img/works/thumbs/image-04.jpg" alt="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis elementum odio. Curabitur pellentesque, dolor vel pharetra mollis.">
-                  </li>
-                  <!-- End Item Project -->
-                  <!-- Item Project and Filter Name -->
-                  <li class="item-thumbs span2 photography" data-id="id-4" data-type="web">
-                    <!-- Fancybox - Gallery Enabled - Title - Full Image -->
-                    <a class="hover-wrap fancybox" data-fancybox-group="gallery" title="The Sea" href="<?=base_url()?>assets/img/works/full/image-05-full.jpg">
-						<span class="overlay-img"></span>
-						<span class="overlay-img-thumb font-icon-plus"></span>
-						</a>
-                    <!-- Thumb Image and Description -->
-                    <img src="<?=base_url()?>assets/img/works/thumbs/image-05.jpg" alt="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis elementum odio. Curabitur pellentesque, dolor vel pharetra mollis.">
-                  </li>
-                  <!-- End Item Project -->
-                  <!-- Item Project and Filter Name -->
-                  <li class="item-thumbs span2 photography" data-id="id-5" data-type="icon">
-                    <!-- Fancybox - Gallery Enabled - Title - Full Image -->
-                    <a class="hover-wrap fancybox" data-fancybox-group="gallery" title="Clouds" href="<?=base_url()?>assets/img/works/full/image-06-full.jpg">
-						<span class="overlay-img"></span>
-						<span class="overlay-img-thumb font-icon-plus"></span>
-						</a>
-                    <!-- Thumb Image and Description -->
-                    <img src="<?=base_url()?>assets/img/works/thumbs/image-06.jpg" alt="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis elementum odio. Curabitur pellentesque, dolor vel pharetra mollis.">
-                  </li>
-                  <!-- End Item Project -->
-                  <!-- Item Project and Filter Name -->
-                  <li class="item-thumbs span2 photography" data-id="id-2" data-type="illustrator">
-                    <!-- Fancybox - Gallery Enabled - Title - Full Image -->
-                    <a class="hover-wrap fancybox" data-fancybox-group="gallery" title="The Mountains" href="<?=base_url()?>assets/img/works/full/image-07-full.jpg">
-						<span class="overlay-img"></span>
-						<span class="overlay-img-thumb font-icon-plus"></span>
-						</a>
-                    <!-- Thumb Image and Description -->
-                    <img src="<?=base_url()?>assets/img/works/thumbs/image-07.jpg" alt="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis elementum odio. Curabitur pellentesque, dolor vel pharetra mollis.">
-                  </li>
-                  <!-- End Item Project -->
-                  <!-- Item Project and Filter Name -->
-                  <li class="item-thumbs span2 design" data-id="id-0" data-type="web">
-                    <!-- Fancybox - Gallery Enabled - Title - Full Image -->
-                    <a class="hover-wrap fancybox" data-fancybox-group="gallery" title="The Dark" href="<?=base_url()?>assets/img/works/full/image-08-full.jpg">
-						<span class="overlay-img"></span>
-						<span class="overlay-img-thumb font-icon-plus"></span>
-						</a>
-                    <!-- Thumb Image and Description -->
-                    <img src="<?=base_url()?>assets/img/works/thumbs/image-08.jpg" alt="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis elementum odio. Curabitur pellentesque, dolor vel pharetra mollis.">
-                  </li>
-                  <!-- End Item Project -->
+						<img style="object-fit: cover;max-height:100px;" src="<?=base_url()?>assets/img/<?=$key->thumbnail_img?>" alt="<?=substr(strip_tags($key->deskripsi),0,40)?>... <a href='<?=base_url()?>id/gallery/<?=$key->slug?>'>Read more</a>">
+					</li>
+				<?php $count++; endforeach; ?>
                 </ul>
               </section>
             </div>

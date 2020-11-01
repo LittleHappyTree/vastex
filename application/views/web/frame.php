@@ -69,14 +69,10 @@
               <!-- Slider -->
               <div id="nivo-slider">
                 <div class="nivo-slider">
-                  <!-- Slide #1 image -->
-                  <img src="<?=base_url()?>assets/img/slides/nivo/bg-1.jpg" height="200px" alt="" title="#caption-1" />
-                  <!-- Slide #2 image -->
-                  <img src="<?=base_url()?>assets/img/slides/nivo/bg-2.jpg" alt="" title="#caption-2" />
-                  <!-- Slide #3 image -->
-                  <img src="<?=base_url()?>assets/img/slides/nivo/bg-3.jpg" alt="" title="#caption-3" />
+                  <?php foreach ($gallery_picture as $key):?>
+                  <img src="<?=base_url()?>assets/img/<?=$key->thumbnail_img?>" height="200px" style="object-position: 50% 50%;" alt="" title="#caption-1" />
+                  <?php endforeach; ?>
                 </div>
-              </div>
               <!-- end slider -->
             </section>
           </div>
@@ -109,12 +105,12 @@
           </div>
           <div class="span2">
             <div class="menu-heading text-center">
-              <a href="<?=base_url()?>id/development" class="btn btn-menu btn-block <?=($active_page=='machinery') ? 'activated' : '';?>">Machinery Investment Planning</a>
+              <a href="<?=base_url()?>id/machinery" class="btn btn-menu btn-block <?=($active_page=='machinery') ? 'activated' : '';?>">Machinery Investment Planning</a>
             </div>
           </div>
           <div class="span1">
             <div class="menu-heading text-center">
-              <a href="<?=base_url()?>id/development" class="btn btn-menu btn-block <?=($active_page=='gallery') ? 'activated' : '';?>">Gallery</a>
+              <a href="<?=base_url()?>id/gallery" class="btn btn-menu btn-block <?=($active_page=='gallery') ? 'activated' : '';?>">Gallery</a>
             </div>
           </div>
           <div class="span2">

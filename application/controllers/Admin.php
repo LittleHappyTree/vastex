@@ -36,6 +36,7 @@ class Admin extends MY_Controller {
           $data['id'] = ($var1=='add') ? '' : $var2;
           $data['judul'] = $this->models->getdata($sql_edit,$array,'judul');
           $data['deskripsi']   = $this->models->getdata($sql_edit,$array,'deskripsi');
+          $data['date_added']   = $this->models->getdata($sql_edit,$array,'date_added');
           if ($var1=='edit') {
             $sql_picture = "SELECT * FROM gallery_picture WHERE gallery_id = '".$data['id']."' ";
             $data['load_picture'] = $this->models->openquery2($sql_picture);
@@ -503,13 +504,15 @@ class Admin extends MY_Controller {
           $judul         = $this->input->post('judul');
           $deskripsi     = $this->input->post('deskripsi');
           $id            = $this->input->post('id');
+          $date_added    = date('Y-m-d H:i:s');
+
           $array = array(
             "judul"   => $judul,
             "deskripsi"       => $deskripsi,
             "user_modified"   => $log['uname']
           );
           if (empty($id)) {
-            $array += [ "slug" => $this->get_slug('gallery',$judul)];
+            $array += [ "slug" => $this->get_slug('gallery',$judul), "date_added" => $date_added ];
             $this->models->insert('gallery',$array);
             $id = $this->db->insert_id();
           } else {
@@ -675,6 +678,10 @@ class Admin extends MY_Controller {
       } else {
         redirect("id");
       }
+    }
+
+    function formatdatetime($var){
+      return date('Y-m-d', strtotime($var)).' '.date('H:i:s');
     }
 
     function alert($type,$msg){

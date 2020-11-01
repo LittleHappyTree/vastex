@@ -372,6 +372,7 @@ $('.op-select-1').select2();
 $('.op-select-2').select2();
 $('.op-select-3').select2();
 $('.op-select-4').select2();
+$('#datepicker').datepicker({autoclose: true,format: 'dd-mm-yyyy'});
 </script>
 </body>
 </html>

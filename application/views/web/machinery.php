@@ -3,19 +3,19 @@
     <div class="span8">
       <div class="post-image">
         <div class="post-heading">
-          <h3><a href="<?=base_url()?>id/service">Our Services</a></h3>
+          <h3><a href="<?=base_url()?>id/machinery">Our Machinery</a></h3>
         </div>
       </div>
     </div>
   </div>
 </article>
-<?php foreach ($service_inside as $key):?>
+<?php foreach ($machinery_inside as $key):?>
 <article style="margin-top:-70px">
   <div class="row">
     <div class="span8">
       <div class="post-image">
         <div class="post-heading">
-          <h4><a href="<?=base_url()?>id/service/<?=$key->slug?>"><?=$key->judul_service?></a></h4>
+          <h4><a href="<?=base_url()?>id/machinery/<?=$key->slug?>"><?=$key->judul_service?></a></h4>
         </div>
         <div class="aligncenter">
         <img src="<?=base_url()?>assets/img/<?=$key->thumbnail_img?>" alt="" />
@@ -33,7 +33,7 @@
         <?php endif; ?>
       </p>
       <?php if (empty($id)):?>
-      <a href="<?=base_url()?>id/service/<?=$key->slug?>" class="btn btn-theme">Read More</a>
+      <a href="<?=base_url()?>id/machinery/<?=$key->slug?>" class="btn btn-theme">Read More</a>
       <?php endif; ?>
       <br>
       <br>

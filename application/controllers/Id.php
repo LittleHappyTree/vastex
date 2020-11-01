@@ -16,6 +16,8 @@ class Id extends CI_Controller {
 		$data['master_product'] = $this->models->opentable('master_product','ORDER BY id');
 		$data['detail_product'] = $this->models->opentable('product_1','ORDER BY id');
 		$data['service'] = $this->models->opentable('service','ORDER BY id');
+		$data['machinery'] = $this->models->opentable('machinery','ORDER BY id');
+		$data['gallery_picture'] = $this->models->opentable('v_gallery_picture','LIMIT 8');
 		$data['active_page'] = 'home';
 		$data['page'] 		 = 'web/about-us';
 		$sql = 'SELECT * FROM about';
@@ -67,6 +69,25 @@ class Id extends CI_Controller {
 		$this->load->view('web/frame',$data);
 	}
 
+	public function machinery($var1=""){
+		$data['address'] = $this->get_address();
+		$data['contact'] = $this->get_contact();
+		$data['master_product'] = $this->models->opentable('master_product','ORDER BY id');
+		$data['detail_product'] = $this->models->opentable('product_1','ORDER BY id');
+		$data['machinery'] = $this->models->opentable('machinery','ORDER BY id');
+		$data['machinery_inside'] = $data['machinery'];
+		$data['id']      = $var1;
+		if (!empty($var1)) {
+			$data['machinery_inside'] = $this->models->opentable('machinery',"AND slug = '".$var1."' ORDER BY id");
+			if (count($data['machinery_inside']) == 0) {
+				redirect('id/machinery');
+			}
+		}
+		$data['page']    = 'web/machinery';
+		$data['active_page'] = 'machinery';
+		$this->load->view('web/frame',$data);
+	}
+
 	public function about(){
 		$data['address'] = $this->get_address();
 		$data['contact'] = $this->get_contact();
@@ -78,23 +99,41 @@ class Id extends CI_Controller {
 		$this->load->view('web/frame',$data);
 	}
 
-	public function certificate(){
+	public function certificate($var1=""){
 		$data['address'] = $this->get_address();
 		$data['contact'] = $this->get_contact();
 		$data['master_product'] = $this->models->opentable('master_product','ORDER BY id');
 		$data['detail_product'] = $this->models->opentable('product_1','ORDER BY id');
+		$data['certificate'] = $this->models->opentable('certificate','ORDER BY id');
+		$data['certificate_inside'] = $data['certificate'];
+		$data['id']      = $var1;
+		if (!empty($var1)) {
+			$data['certificate_inside'] = $this->models->opentable('certificate',"AND slug = '".$var1."' ORDER BY id");
+			if (count($data['certificate_inside']) == 0) {
+				redirect('id/certificate');
+			}
+		}
 		$data['active_page'] = 'certificate';
 		$data['page'] 		 = 'web/certificate';
 		$this->load->view('web/frame',$data);
 	}
 
-	public function development(){
+	public function gallery($var1=''){
 		$data['address'] = $this->get_address();
 		$data['contact'] = $this->get_contact();
 		$data['master_product'] = $this->models->opentable('master_product','ORDER BY id');
 		$data['detail_product'] = $this->models->opentable('product_1','ORDER BY id');
-		$data['active_page'] = 'development';
-		$data['page'] 		 = 'web/development';
+		$data['gallery_view'] = $this->models->opentable('v_gallery','');
+		$data['id']      = $var1;
+		if (!empty($var1)) {
+			$data['gallery_view'] = $this->models->opentable('v_gallery',"AND slug = '".$var1."' ORDER BY id");
+			if (count($data['gallery_view']) == 0) {
+				redirect('id/gallery');
+			}
+			$data['gallery_picture_in'] = $this->models->opentable('v_gallery_picture',"AND slug = '".$var1."' ORDER BY id");
+		}
+		$data['active_page'] = 'gallery';
+		$data['page'] 		 = 'web/gallery';
 		$this->load->view('web/frame',$data);
 	}
 
