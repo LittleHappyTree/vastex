@@ -105,7 +105,7 @@
           </div>
           <div class="span2">
             <div class="menu-heading text-center">
-              <a href="<?=base_url()?>id/machinery" class="btn btn-menu btn-block <?=($active_page=='machinery') ? 'activated' : '';?>">Machinery Investment Planning</a>
+              <a href="<?=base_url()?>id/machinery" class="btn btn-menu btn-block <?=($active_page=='machinery') ? 'activated' : '';?>">Production Facilities</a>
             </div>
           </div>
           <div class="span1">

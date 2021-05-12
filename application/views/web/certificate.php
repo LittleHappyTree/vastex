@@ -18,7 +18,7 @@
           <h4><a href="<?=base_url()?>id/certificate/<?=$key->slug?>"><?=$key->judul?></a></h4>
         </div>
         <div class="aligncenter">
-        <img src="<?=base_url()?>assets/img/<?=$key->thumbnail_img?>" alt="" />
+        <img src="<?=base_url()?>assets/img/<?=$key->thumbnail_img?>" alt="" <?php if(empty($id)){ ?> width="200" <?php } ?> />
         </div>
       </div>
       <p>

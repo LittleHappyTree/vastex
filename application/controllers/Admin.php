@@ -584,7 +584,7 @@ class Admin extends MY_Controller {
           redirect('admin/service');
         } elseif ($var1=='machinery') {
           $this->models->delete('machinery', array("id" => $var2) );
-          redirect('admin/service');
+          redirect('admin/machinery');
         } elseif ($var1=='certificate') {
           $this->models->delete('certificate', array("id" => $var2) );
           redirect('admin/certificate');

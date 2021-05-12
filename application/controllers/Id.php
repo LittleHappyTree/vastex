@@ -12,7 +12,6 @@ class Id extends CI_Controller {
 	public function index(){
 		$data['address'] = $this->get_address();
 		$data['contact'] = $this->get_contact();
-		$data['costumers'] = $this->models->opentable('client','ORDER BY id DESC');
 		$data['master_product'] = $this->models->opentable('master_product','ORDER BY id');
 		$data['detail_product'] = $this->models->opentable('product_1','ORDER BY id');
 		$data['service'] = $this->models->opentable('service','ORDER BY id');
@@ -109,12 +108,11 @@ class Id extends CI_Controller {
 		$data['gallery_picture'] = $this->models->opentable('v_gallery_picture','LIMIT 8');
 		$data['master_product'] = $this->models->opentable('master_product','ORDER BY id');
 		$data['detail_product'] = $this->models->opentable('product_1','ORDER BY id');
-		$data['certificate'] = $this->models->opentable('certificate','ORDER BY id');
-		$data['certificate_inside'] = $data['certificate'];
+		$data['certificate'] = $this->models->opentable('certificate','ORDER BY id DESC');
 		$data['id']      = $var1;
 		if (!empty($var1)) {
-			$data['certificate_inside'] = $this->models->opentable('certificate',"AND slug = '".$var1."' ORDER BY id");
-			if (count($data['certificate_inside']) == 0) {
+			$data['certificate'] = $this->models->opentable('certificate',"AND slug = '".$var1."' ORDER BY id DESC");
+			if (count($data['certificate']) == 0) {
 				redirect('id/certificate');
 			}
 		}

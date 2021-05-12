@@ -77,7 +77,7 @@
 	</div>
 	<div class="row new-content">
 		<div class="span8">
-			<h3 class="heading"><strong>Machinery Investment Planning</strong></h3>
+			<h3 class="heading"><strong>Production Facilities</strong></h3>
 			<div class="row">
 				<div class="span12">
 					<?php foreach ($machinery as $key):?>
@@ -85,30 +85,6 @@
 					<?php endforeach; ?>
 				</div>
 			</div>
-		</div>
-	</div>
-	<div class="row">
-		<div class="span8">
-			<div class="solidline new-content">
-			</div>
-		</div>
-	</div>
-	<div class="row new-content">
-		<div class="span8">
-			<h3 class="heading"><strong>Our Customers</strong></h3>
-			<ul id="mycarousel" class="jcarousel-skin-tango recent-jcarousel clients">
-			<?php foreach ($costumers as $key):?>
-			<?php $style = (empty($key->thumbnail_img)) ? 'margin-top:35px;' : '' ; ?>
-				<li style="width:250px; height:120px;">
-					<div class="aligncenter">
-						<?php if (!empty($key->thumbnail_img)):?>
-						<img src="<?=base_url()?>assets/img/<?=$key->thumbnail_img?>" style="height:35px;padding-top:10px;" alt="">
-						<?php endif; ?>
-						<p style="padding-top:10px;<?=$style?>"><?=$key->client?></p>
-					</div>
-				</li>
-			<?php endforeach; ?>
-			</ul>
 		</div>
 	</div>
 	<div class="row">

@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="<?=base_url() ?>assets/admin/summernote/summernote.css">
 <script src="<?=base_url() ?>assets/admin/summernote/summernote.js"></script>
 <section class="content-header">
-    <h1>Machinery</h1>
+    <h1>Production Facilities</h1>
 </section>
 
 
@@ -10,7 +10,7 @@
         <div class="col-md-12">
             <div class="box box-primary">
                 <div class="box-header with-border">
-                    <h3 class="box-title"> <?=$retVal = ($id=='') ? 'Add' : 'Edit' ;?> Machinery</h3>
+                    <h3 class="box-title"> <?=$retVal = ($id=='') ? 'Add' : 'Edit' ;?> Production Facilities</h3>
                 </div>    
                 <div class="box-body">
                     <form action="<?=base_url()?>admin/save/machinery" method="post" enctype="multipart/form-data">
@@ -44,7 +44,7 @@
         <div class="col-md-12">
             <div class="box box-primary">
                 <div class="box-header with-border">
-                    <h3 class="box-title"> List Machinery</h3>
+                    <h3 class="box-title"> List Production Facilities</h3>
                 </div>    
                 <div class="box-body">
                 <table id="mytable1" class="table table-bordered table-striped">
