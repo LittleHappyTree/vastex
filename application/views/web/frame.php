@@ -54,7 +54,7 @@
         <div class="row">
           <div class="span4">
             <div class="logo text-center" style="font-size: 13px; margin-top: 35px">
-              <a href="index.html"><img src="<?=base_url()?>assets/img/logo-vastex.png" width="300px" /></a>
+              <a href="index.html"><img src="<?=base_url()?>assets/img/logo-vastex-2.png" width="300px" /></a>
               <?php foreach ($address as $key):?>
               <p><?=$key->address?></p>
               <?php endforeach; ?>
