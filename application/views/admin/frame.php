@@ -120,6 +120,7 @@
         <li><a href="<?=base_url()?>admin/machinery"><i class="fa fa-gear"></i> <span>Production Facilities</span></a></li>
         <li><a href="<?=base_url()?>admin/customer"><i class="fa fa-building"></i> <span>Customer</span></a></li>
         <li><a href="<?=base_url()?>admin/gallery"><i class="fa fa-file-photo-o"></i> <span>Gallery</span></a></li>
+        <li><a href="<?=base_url()?>admin/banner"><i class="fa fa-file-photo-o"></i> <span>Gallery Banner</span></a></li>
         <li><a href="<?=base_url()?>admin/contact"><i class="fa fa-phone"></i> <span>Address &amp; Contact</span></a></li>
         <?php if ($akses < 2):?>
         <li><a href="<?=base_url()?>admin/user"><i class="fa fa-user"></i> <span>User</span></a></li>

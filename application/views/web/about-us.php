@@ -99,7 +99,7 @@
             <div class="row">
               <section id="projects">
                 <ul id="thumbs" class="portfolio">
-				<?php $count=0; foreach ($gallery_picture as $key):?>
+				<?php $count=0; foreach ($gallery_picture2 as $key):?>
 					<li class="item-thumbs span2 design" data-id="id-<?=$count?>" data-type="web">
 						<a class="hover-wrap fancybox" data-fancybox-group="gallery" title="<?=$key->judul?>" href="<?=base_url()?>assets/img/<?=$key->thumbnail_img?>">
 						<span class="overlay-img"></span>

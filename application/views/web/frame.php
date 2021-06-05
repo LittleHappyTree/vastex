@@ -28,15 +28,7 @@
   <link rel="apple-touch-icon-precomposed" href="<?=base_url()?>assets/ico/apple-touch-icon-57-precomposed.png" />
   <link rel="shortcut icon" href="<?=base_url()?>assets/ico/favicon.png" />
 
-  <!-- =======================================================
-    Theme Name: Flattern
-    Theme URL: https://bootstrapmade.com/flattern-multipurpose-bootstrap-template/
-    Author: BootstrapMade.com
-    Author URL: https://bootstrapmade.com
-  ======================================================= -->
 </head>
-
-
 
 <body>
   <div id="wrapper" class="boxed">
@@ -70,7 +62,7 @@
               <div id="nivo-slider">
                 <div class="nivo-slider">
                   <?php foreach ($gallery_picture as $key):?>
-                  <img src="<?=base_url()?>assets/img/<?=$key->thumbnail_img?>" height="200px" style="object-position: 50% 50%;" alt="" title="#caption-1" />
+                  <img src="<?=base_url()?>assets/img/<?=$key->thumbnail_img?>" height="50px" style="object-position: 25% 25%;" alt="" title="#caption-1" />
                   <?php endforeach; ?>
                 </div>
               <!-- end slider -->
@@ -207,11 +199,15 @@
                 <p><?=$key->address?></p>
                 <?php endforeach; ?>
 					 		</address>
-              <p>
+              <table style="font-size:13px;">
                 <?php foreach ($contact as $key):?>
-                    <?=$retVal = (empty($key->icon)) ? $key->title.':' : '<i class="fa '.str_replace('fa-','icon-',$key->icon).'"></i>' ;?> <?=$key->description?><br>
+                  <tr>
+                    <td width="15%"><?=$retVal = (empty($key->icon)) ? $key->title : '<i class="fa '.str_replace('fa-','icon-',$key->icon).'"></i>' ;?></td>
+                    <td width="5%">:</td>
+                    <td><?=$key->description?></td>
+                  </tr>
                 <?php endforeach; ?>
-              </p>
+              </table>
             </div>
           </div>
         </div>

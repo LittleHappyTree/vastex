@@ -25,11 +25,15 @@
       <h4><b>Vastex</b></h4>
       <p><?=$key->address?></p>
       <?php endforeach; ?>
-      <p>
+      <table>
         <?php foreach ($contact as $key):?>
-            <?=$retVal = (empty($key->icon)) ? $key->title.':' : '<i class="fa '.str_replace('fa-','icon-',$key->icon).'"></i>' ;?> <?=$key->description?><br>
+        <tr>
+          <td width="15%"><?=$retVal = (empty($key->icon)) ? $key->title : '<i class="fa '.str_replace('fa-','icon-',$key->icon).'"></i>' ;?></td>
+          <td width="5%">:</td>
+          <td><?=$key->description?></td>
+        </tr>
         <?php endforeach; ?>
-      </p>
+      </table>
     </div>
   </div>
 </article>

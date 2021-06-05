@@ -51,6 +51,20 @@ class Admin extends MY_Controller {
       }
     }
 
+    function banner($var1="", $var2=""){
+      if(count($this->session->userdata("userlogin")) > 0) {
+        $log = $this->session->userdata("userlogin");
+        $data['full_name'] = $log['full_name'];
+        $data['akses'] = $log['akses'];
+        $data['page'] = 'admin/banner';
+        $sql = "SELECT * FROM gallery_banner ORDER BY id";
+        $data['load_picture'] = $this->models->openquery2($sql);
+        $this->load->view('admin/frame',$data);
+      } else {
+        redirect("id");
+      }
+    }
+
     function customer($id=""){
       if(count($this->session->userdata("userlogin")) > 0) {
         $log = $this->session->userdata("userlogin");
@@ -535,6 +549,14 @@ class Admin extends MY_Controller {
           $array += [ "thumbnail_img" => $thumbnail_img ];
           $this->models->insert('gallery_picture',$array);
           redirect('admin/gallery/edit/'.$gallery_id.'#gallery-picture');
+        } elseif ($var1=='gallery_banner') {
+          $thumbnail_img = $this->up_file('thumbnail_img');
+          $array = array(
+            "user_added"   => $log['uname']
+          );
+          $array += [ "thumbnail_img" => $thumbnail_img ];
+          $this->models->insert('gallery_banner',$array);
+          redirect('admin/banner');
         }
       } else {
         redirect("id");
@@ -597,6 +619,9 @@ class Admin extends MY_Controller {
         } elseif ($var1=='gallery_picture') {
           $this->models->delete('gallery_picture', array("id" => $var2) );
           redirect('admin/gallery/edit/'.$var3.'#gallery-picture');
+        } elseif ($var1=='gallery_banner') {
+          $this->models->delete('gallery_banner', array("id" => $var2) );
+          redirect('admin/banner');
         }
       } else {
         redirect("id");
